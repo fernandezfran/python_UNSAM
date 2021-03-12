@@ -17,10 +17,8 @@ pago_extra = 1000.0
 pago_extra_mes_comienzo = 61
 pago_extra_mes_fin = 108
 
-mes = 0
+mes = 1
 while saldo > 0:
-
-    mes = mes + 1
     
     if (mes < pago_extra_mes_comienzo):
         saldo = saldo * (1 + tasa/12) - pago_mensual
@@ -39,5 +37,7 @@ while saldo > 0:
         saldo = saldo - saldo
 
     print(mes, round(total_pagado,2), round(saldo,2))
-
+    
+    mes = mes + 1
+    
 print(f'David pagó ${total_pagado:0.2f} en {mes} meses')
