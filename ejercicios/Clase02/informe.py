@@ -1,5 +1,9 @@
 #### informe.py
 #
+# Este código se corre de la siguiente manera:
+#
+# $ python3 informe.py ../Data/camion.csv ../Data/precios.csv
+#
 # E 2.15: Lista de tuplas
 #
 # [edited] E 2.16: Lista de diccionarios
@@ -8,6 +12,7 @@
 #
 # [edited - main] E 2.18: Balance
 import csv
+import sys
 
 def leer_camion(nombre_archivo):
     """
@@ -47,8 +52,11 @@ def leer_precios(nombre_archivo):
     return precios
 
 
-camion = leer_camion('../Data/camion.csv')
-precios = leer_precios('../Data/precios.csv')
+""" main """
+#camion = leer_camion('../Data/camion.csv')
+#precios = leer_precios('../Data/precios.csv')
+camion = leer_camion(sys.argv[1])
+precios = leer_precios(sys.argv[2])
 
 compra, venta = 0.0, 0.0
 for s in camion:
