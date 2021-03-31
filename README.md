@@ -5,3 +5,4 @@ Los teóricos se encuentran en este [repo](https://github.com/python-unsam/Progr
 + [Clase 1](https://www.youtube.com/watch?v=BcqyW_tbrG8&ab_channel=PythonECyT): Introducción a Python
 + [Clase 2](https://www.youtube.com/watch?v=paDcOm7F2VE&ab_channel=PythonECyT): Estructuras y funciones
 + [Clase 3](https://www.youtube.com/watch?v=CVOPnsOJEqc&ab_channel=PythonECyT): Trabajando con datos
++ [Clase 4](https://www.youtube.com/watch?v=S_UHwl5RnME&ab_channel=PythonECyT): Algoritmos sobre listas y compresión de listas
