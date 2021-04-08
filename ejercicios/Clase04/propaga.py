@@ -36,3 +36,4 @@ def propagar(lista):
 # [main] E 4.9: Propagación
 print(propagar([ 0, 0, 0,-1, 1, 0, 0, 0,-1, 0, 1, 0, 0]))
 print(propagar([ 0, 0, 0, 1, 0, 0]))
+print(propagar([ 0, 0, 0, 0, 0, 1]))

@@ -15,7 +15,7 @@ def tirar(n_dados):
     devuelve una lista con n_dados dados generados aleatoriamente
     """
 
-    tirada = [random.randint(1,6) for i in range(n_dados)]
+    tirada = [random.randint(1,6) for _ in range(n_dados)]
 
     return tirada
 
@@ -25,12 +25,7 @@ def es_generala(tirada):
     devuelve True si y sólo si los cinco dados de la lista tirada son iguales
     """
     
-    a = tirada[0]
-    for dado in tirada:
-        if dado != a: return False
-        a = dado
-
-    return True
+    return max(tirada) == min(tirada)
 
 
 def guardo(tirada):
