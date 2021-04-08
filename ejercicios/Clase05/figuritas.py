@@ -50,7 +50,7 @@ def comprar_figu(figus_total):
     """
     recibe el número de figuritas total que tiene un álbum a través del parámetro
     figus_total y devuelve un número entero aleatorio que representa la figurita
-    que toco (entre 1 y figus_total)
+    que toco (entre 0 y figus_total-1)
     """
 
     return random.randint(0, figus_total-1)
@@ -121,6 +121,7 @@ l = np.array(l)
 print(np.mean(l))
 print()
 
+
 print(""" main : 5.18 """)
 n_repeticiones = 100
 figus_total = 670
@@ -130,8 +131,11 @@ l = [cuantos_paquetes(figus_total, figus_paquete) for i in range(n_repeticiones)
 l = np.array(l)
 
 print(np.mean(l))
+print()
 
-# # # # # Grafica el llenado del album 
+
+print(""" main : grafico el llenado """)
+
 def calcular_historia_figus_pegadas(figus_total, figus_paquete):
     album = crear_album(figus_total)
     historia_figus_pegadas = [0]
@@ -151,3 +155,44 @@ plt.xlabel("Cantidad de paquetes comprados.")
 plt.ylabel("Cantidad de figuritas pegadas.")
 plt.title("La curva de llenado se desacelera al final")
 plt.show()
+print()
+
+
+print(""" main : optativos """)
+n_repeticiones = 100
+figus_total = 670
+figus_paquete = 5
+
+l = [cuantos_paquetes(figus_total, figus_paquete) for i in range(n_repeticiones)]
+l = np.array(l)
+
+print(f'E 5.19: el {100 * (l <= 850).sum() / n_repeticiones} % de los albunes se llenaron con la compra de menos de 850 paquetes')
+print()
+
+
+plt.hist(l, bins=25)
+plt.title("E 5.20: Histograma")
+plt.xlabel("nro de paquetes totales")
+plt.show()
+
+
+i = np.mean(l)
+while ((l < i).sum() / n_repeticiones < 0.9): i += 5
+print(f'E 5.21: para obtener más del 90 % de chances de completar el álbum se necesitan comprar {int(i):d} paquetes (tiene sentido, es el final de la cola superior de la gaussiana)')
+print()
+
+
+print(f'E 5.22: trivial (si no se repiten las figuritas, entonces el album se llena con la misma cantidad de compras de figuritas necesaria, si no hay paquetes, y si son paquetes, el nro de figuritas / nro de figuritas en el paquete)')
+print()
+
+
+print(f'E 5.23: cooperacion == album de n_cooperadores * cantidad de figuritas')
+n_repeticiones = 100
+amigues = 5
+figus_total = 670 * amigues
+figus_paquete = 5
+
+ll = [cuantos_paquetes(figus_total, figus_paquete) for i in range(n_repeticiones)]
+ll = np.array(ll)
+
+print(f'En promedio, la cantidad de paquetes que tienen que comprar los {amigues} amigues es {ll.mean()}, que si lo dividimos por {amigues} nos da {ll.mean() / amigues:.2f} (comparar con {l.mean()} que compra 1 solo')
