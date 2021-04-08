@@ -6,3 +6,4 @@ Los teóricos se encuentran en este [repo](https://github.com/python-unsam/Progr
 + [Clase 2](https://www.youtube.com/watch?v=paDcOm7F2VE&ab_channel=PythonECyT): Estructuras y funciones
 + [Clase 3](https://www.youtube.com/watch?v=CVOPnsOJEqc&ab_channel=PythonECyT): Trabajando con datos
 + [Clase 4](https://www.youtube.com/watch?v=S_UHwl5RnME&ab_channel=PythonECyT): Algoritmos sobre listas y compresión de listas
++ [Clase 5](https://www.youtube.com/watch?v=EVVTTcWhlAg&ab_channel=PythonECyT): Aleatoriedad
