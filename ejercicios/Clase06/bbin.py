@@ -1,5 +1,9 @@
 #### bbin.py
-
+#
+# E 6.14: Búsqueda binaria
+#
+# E 6.15: Insertar un elemento en una lista
+#
 def donde_insertar(lista, x, verbose = False):
     """
     Precondición: la lista está ordenada
@@ -40,11 +44,13 @@ def insertar(lista, x):
     """
 
     idx = donde_insertar(lista, x)
+    
     if (x == lista[idx]):
-        l = lista
-    elif (idx == len(lista) - 1 and x > lista[idx]):
-        l = lista + [x]
+        pass
+    elif (x > lista[idx]):
+        idx += 1
+        lista.insert(idx, x)
     else:
-        l = lista[:idx] + [x] + lista[idx:]
+        lista.insert(idx, x)
 
-    return l
+    return idx
