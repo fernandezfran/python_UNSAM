@@ -88,6 +88,7 @@ for i, n in enumerate(largos):
     comps_promedio_s[i] = experimento_secuencial_promedio(lista, m, k)
     comps_promedio_b[i] = experimento_binario_promedio(lista, m, k)
 
+plt.xscale("log")
 plt.yscale("log")
 plt.plot(largos, comps_promedio_s, label='Busqueda secuencial')
 plt.plot(largos, comps_promedio_b, label='Busqueda binaria')
