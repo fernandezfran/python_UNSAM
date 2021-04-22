@@ -100,4 +100,5 @@ def informe_camion(nombre_archivo_camion, nombre_archivo_precios):
     imprimir_informe(informe)
 
 
-#informe_camion('../Data/fecha_camion.csv', '../Data/precios.csv')
+if __name__ == '__main__':
+    informe_camion('../Data/fecha_camion.csv', '../Data/precios.csv')

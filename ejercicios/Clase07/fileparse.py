@@ -14,12 +14,15 @@
 #
 # E 7.1: Errores silenciados
 #
+# E 7.4: De archvios a "objetos cual archivos"
+#
 import csv
 
-def parse_csv(nombre_archivo, select=None, types=None, has_headers=True,
+def parse_csv(rows, select=None, types=None, has_headers=True, 
               silence_errors=False):
     """
-    Parsea un archivo CSV en una lista de registros.
+    Parsea datos como los que se otienen de un archivo CSV en una lista de 
+    registros.
 
     Se puede seleccionar sólo un subconjunto de columnas, determinando el 
     parámetrro select, que debe ser una lista de nombres de las columnas a 
@@ -41,46 +44,45 @@ def parse_csv(nombre_archivo, select=None, types=None, has_headers=True,
     if select and not has_headers:
         raise RuntimeError("Para seleccionar, necesito encabezados.")
 
-    # trabaja sobre el archivo
-    with open(nombre_archivo) as f:
-        rows = csv.reader(f)
+    # trabaja sobre las lineas del el archivo
+    indices = []
+    if has_headers: 
+        # Lee los encabezados
+        headers   = next(rows).split(',')
 
-        indices = []
-        if has_headers: 
-            # Lee los encabezados
-            headers   = next(rows)
-
-            # Si se indicó un selector de columnas, buscar los índices de las 
-            # columnas especificadas. En ese caso, achicar el conjunto de
-            # encabezados para los diccionarios.
-            if select:
-                indices = [headers.index(nombre_columna) for
-                                                         nombre_columna in select]
-                headers = select
+        # Si se indicó un selector de columnas, buscar los índices de las 
+        # columnas especificadas. En ese caso, achicar el conjunto de
+        # encabezados para los diccionarios.
+        if select:
+            indices = [headers.index(nombre_columna) for
+                                                     nombre_columna in select]
+            headers = select
+    
+    registros = []
+    for nrow, row in enumerate(rows, start=1):
         
-        registros = []
-        for nrow, row in enumerate(rows, start=1):
-            if not row: continue # saltea fila sin dato
+        if not row: continue # saltea fila sin dato
 
-            # filtrar la fila que si se especificaron columnas
-            if indices: row = [row[index] for index in indices]
+        # filtrar la fila que si se especificaron columnas
+        row = row.split(',')
+        if indices: row = [row[index] for index in indices]
 
-            # convierte el tipo de los datos
-            try:
-                if types: row = [func(val) for func, val in zip(types, row)]
-            except ValueError as ve:
-                if not silence_errors:
-                    print(f"Fila {nrow}: No pude convertir {row}")
-                    print(f"Fila {nrow}: Motivo: {ve}")
-                continue
+        # convierte el tipo de los datos
+        try:
+            if types: row = [func(val) for func, val in zip(types, row)]
+        except ValueError as ve:
+            if not silence_errors:
+                print(f"Fila {nrow}: No pude convertir {row}")
+                print(f"Fila {nrow}: Motivo: {ve}")
+            continue
 
-            if has_headers:
-                # armar el diccionario
-                registro = dict(zip(headers, row))
-            else:
-                # armar tupla
-                registro = tuple(row)
-            
-            registros.append(registro)
+        if has_headers:
+            # armar el diccionario
+            registro = dict(zip(headers, row))
+        else:
+            # armar tupla
+            registro = tuple(row)
+        
+        registros.append(registro)
 
     return registros
