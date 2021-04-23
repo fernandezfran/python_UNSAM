@@ -1,3 +1,4 @@
 ejercicios/Data/arbolado-en-espacios-verdes.csv
 *.npy
+*.png
 */*/__pycache__
