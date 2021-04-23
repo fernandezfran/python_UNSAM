@@ -46,25 +46,29 @@ def parse_csv(rows, select=None, types=None, has_headers=True,
 
     # trabaja sobre las lineas del el archivo
     indices = []
-    if has_headers: 
-        # Lee los encabezados
-        headers   = next(rows).split(',')
-
-        # Si se indicó un selector de columnas, buscar los índices de las 
-        # columnas especificadas. En ese caso, achicar el conjunto de
-        # encabezados para los diccionarios.
-        if select:
-            indices = [headers.index(nombre_columna) for
-                                                     nombre_columna in select]
-            headers = select
-    
     registros = []
     for nrow, row in enumerate(rows, start=1):
+       
+        if row == '\n': continue # saltea fila sin dato
         
-        if not row: continue # saltea fila sin dato
+        if has_headers and nrow == 1: 
+            # Lee los encabezados
+            headers = row.split(',')
+            headers[-1] = headers[-1].strip('\n') # saco el caracter '\n'
+
+            # Si se indicó un selector de columnas, buscar los índices de las 
+            # columnas especificadas. En ese caso, achicar el conjunto de
+            # encabezados para los diccionarios.
+            if select:
+                indices = [headers.index(nombre_columna) for
+                                                         nombre_columna in select]
+                headers = select
+
+            continue
 
         # filtrar la fila que si se especificaron columnas
         row = row.split(',')
+        row[-1] = row[-1].strip('\n')
         if indices: row = [row[index] for index in indices]
 
         # convierte el tipo de los datos

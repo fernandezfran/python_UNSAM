@@ -39,7 +39,8 @@ def leer_camion(nombre_archivo):
     información como una lista de diccionarios
     """
 
-    camion = fp.parse_csv(nombre_archivo, select=['nombre', 'cajones', 'precio'],
+    with open(nombre_archivo) as f_camion:
+        camion = fp.parse_csv(f_camion, select=['nombre', 'cajones', 'precio'],
                           types=[str, int, float])
 
     return camion
@@ -51,8 +52,9 @@ def leer_precios(nombre_archivo):
     diccionario donde las claves son los nombres de las frutas y verduras (por ej)
     y los valores son los precios por cajón
     """
-
-    precios = fp.parse_csv(nombre_archivo, types=[str, float], has_headers=False)
+    
+    with open(nombre_archivo) as f_precios:
+        precios = fp.parse_csv(f_precios, types=[str, float], has_headers=False)
 
     return dict(precios)
 
