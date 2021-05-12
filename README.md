@@ -10,3 +10,4 @@ Los teóricos se encuentran en este [repo](https://github.com/python-unsam/Progr
 + [Clase](https://www.youtube.com/watch?v=b-jj96enpKo&ab_channel=PythonECyT)[ 06](https://www.youtube.com/watch?v=DD3VWKlhcK0&ab_channel=PythonECyT): Complejidad y organización de programas
 + [Clase 07](https://www.youtube.com/watch?v=4QgGuR4Ccb8&ab_channel=PythonECyT): Diseño, especificación, documentación y estilo
 + [Clase 08](https://github.com/python-unsam/Programacion_en_Python_UNSAM/blob/master/Notas/08_Fechas_Carpetas_y_Pandas/00_Resumen.md): Fechas, Carpetas y Pandas
++ [Clase 09](https://www.youtube.com/watch?v=VT9zg-cPv8U&ab_channel=PythonECyT): Clases y Objetos
