@@ -2,6 +2,7 @@
 
 import fileparse
 import lote
+import formato_tabla
 #%%
 def leer_camion(nom_archivo):
     '''
@@ -18,7 +19,7 @@ def leer_camion(nom_archivo):
 #%%
 def leer_precios(nom_archivo):
     '''
-    Lee un archivo CSV con data de precios 
+    Lee un archivo HTML con data de precios 
     y lo devuelve como un diccionario
     con claves nombres y con sus precios como valores
     '''
@@ -38,18 +39,22 @@ def hacer_informe(camion, precios):
         filas.append(reg)
     return filas
 #%%
-def imprimir_informe(data_informe):
+def imprimir_informe(data_informe, formateador):
     '''
     Imprime adecuadamente una tabla de una lista de tuplas
     (nombre, cajones, precio, cambio).
     '''
-    headers = ('Nombre', 'Cajones', 'Precio', 'Cambio')
-    print('%10s %10s %10s %10s' % headers)
-    print(('-'*10 + ' ')*len(headers))
-    for fila in data_informe:
-        print('%10s %10d %10.2f %10.2f' % fila)
+    #headers = ('Nombre', 'Cajones', 'Precio', 'Cambio')
+    #print('%10s %10s %10s %10s' % headers)
+    #print(('-'*10 + ' ')*len(headers))
+    #for fila in data_informe:
+    #    print('%10s %10d %10.2f %10.2f' % fila)
+    formateador.encabezado(['Nombre', 'Cajones', 'Precio', 'Cambio'])
+    for nombre, cajones, precio, cambio in data_informe:
+        rowdata = [ nombre, str(cajones), f'{precio:0.2f}', f'{cambio:0.2f}' ]
+        formateador.fila(rowdata)
 #%%
-def informe_camion(archivo_camion, archivo_precios):        
+def informe_camion(archivo_camion, archivo_precios, fmt = 'txt'):        
     '''
     Crea un informe a partir de un archivo de camión y otro de precios de venta.
     '''
@@ -61,12 +66,13 @@ def informe_camion(archivo_camion, archivo_precios):
     data_informe = hacer_informe(camion, precios)
 
     # Lo imprime
-    imprimir_informe(data_informe)
+    formateador = formato_tabla.crear_formateador(fmt)
+    imprimir_informe(data_informe, formateador)
 #%%
 def main(args):
-    if len(args) != 3:
+    if len(args) < 3:
         raise SystemExit('Uso: %s archivo_camion archivo_precios' % args[0])
-    informe_camion(args[1], args[2])
+    informe_camion(args[1], args[2], args[3])
 #%%
 if __name__ == '__main__':
     import sys

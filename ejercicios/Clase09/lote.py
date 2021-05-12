@@ -15,4 +15,19 @@ class Lote:
 
     def vender(self, n):
         self.cajones -= n
-        return self.cajones
+
+
+class MiLote(Lote):
+    def __init__(self, nombre, cajones, precio, factor):
+        super().__init__(nombre, cajones, precio)
+        self.factor = factor
+
+    def rematar(self):
+        self.vender(self.cajones)
+
+    def costo(self):
+        return self.factor * self.cajones * self.precio
+
+    def precio(self):
+        costo_orig = super().costo()
+        return self.factor * costo_orig
