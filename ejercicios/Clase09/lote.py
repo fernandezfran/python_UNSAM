@@ -16,6 +16,9 @@ class Lote:
     def vender(self, n):
         self.cajones -= n
 
+    def __repr__(self):
+        return f'Lote({self.nombre}, {self.cajones}, {self.precio})'
+
 
 class MiLote(Lote):
     def __init__(self, nombre, cajones, precio, factor):

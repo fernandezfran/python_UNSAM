@@ -44,11 +44,6 @@ def imprimir_informe(data_informe, formateador):
     Imprime adecuadamente una tabla de una lista de tuplas
     (nombre, cajones, precio, cambio).
     '''
-    #headers = ('Nombre', 'Cajones', 'Precio', 'Cambio')
-    #print('%10s %10s %10s %10s' % headers)
-    #print(('-'*10 + ' ')*len(headers))
-    #for fila in data_informe:
-    #    print('%10s %10d %10.2f %10.2f' % fila)
     formateador.encabezado(['Nombre', 'Cajones', 'Precio', 'Cambio'])
     for nombre, cajones, precio, cambio in data_informe:
         rowdata = [ nombre, str(cajones), f'{precio:0.2f}', f'{cambio:0.2f}' ]

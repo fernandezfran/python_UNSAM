@@ -74,3 +74,13 @@ def crear_formateador(fmt):
         raise RuntimeError(f'Unknown format {fmt}')
 
     return formateador
+
+
+def imprimir_tabla(camion, col_sel, formateador):
+    '''
+    recibe camión e imprime una selección de columnas
+    '''
+    formateador.encabezado(col_sel)
+    for fruta in camion:
+        rowdata = [str(getattr(fruta, col_name)) for col_name in col_sel]
+        formateador.fila(rowdata)
