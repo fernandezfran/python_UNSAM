@@ -1,6 +1,7 @@
 ejercicios/Data/arbolado-en-espacios-verdes.csv
 ejercicios/Data/arbolado-publico-lineal-2017-2018.csv
 ejercicios/Data/OBS_SHN_SF-BA.csv
+ejercicios/Data/clip*
 *.npy
 *.png
 */*/__pycache__
