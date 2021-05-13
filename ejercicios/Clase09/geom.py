@@ -37,6 +37,7 @@ class Rectangulo(Punto):
         return Rectangulo(self.a + desplazamiento, self.b + desplazamiento)
 
     def rotar(self):
+        print("Aún no implementado")
         pass
 
     def __str__(self):
