@@ -26,22 +26,23 @@ def parsear_datos(lines):
     rows = hace_dicts(rows, ['nombre', 'precio', 'volumen'])
     return rows
 
-def filtrar_datos(filas, nombres):
-    for fila in filas:
-        if fila['nombre'] in nombres:
-            yield fila
+#def filtrar_datos(filas, nombres):
+#    for fila in filas:
+#        if fila['nombre'] in nombres:
+#            yield fila
 
 def tricker(camion_file, log_file, fmt):
     camion = informe.leer_camion(camion_file)
 
     filas = parsear_datos(vigilar(log_file))
-    filas = filtrar_datos(filas, camion)
+    filas = (fila for fila in filas if fila['nombre'] in camion)
 
     formateador = formato_tabla.crear_formateador(fmt)
     formateador.encabezado(['Nombre', 'Precio', 'Volumen'])
     for fila in filas:
         datos_fila = [fila['nombre'], str(fila['precio']), str(fila['volumen'])]
         formateador.fila(datos_fila)
+
 
 if __name__ == '__main__':
     tricker('../Data/camion.csv', '../Data/mercadolog.csv', 'csv')

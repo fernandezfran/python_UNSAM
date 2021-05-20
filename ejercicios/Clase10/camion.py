@@ -17,11 +17,11 @@ class Camion:
         return self.lotes[index]
 
     def __contains__(self, nombre):
-        return any([lote.nombre == nombre for lote in self.lotes])
+        return any(lote.nombre == nombre for lote in self.lotes)
 
     def precio_total(self):
         # la función costo() está definida en Lote()
-        return sum([l.costo() for l in self.lotes])
+        return sum(l.costo() for l in self.lotes)
 
     def contar_cajones(self):
         from collections import Counter
