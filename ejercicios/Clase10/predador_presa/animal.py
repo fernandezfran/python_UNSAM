@@ -3,6 +3,8 @@
 animal.py
 Created on Wed Oct  7 14:00:00 2020
 @author: mlopez
+
+Modificado el Jueves 20 de Mayo de 2021 a las 20hs (comparar con commit anterior)
 """
 import random
 
@@ -19,18 +21,15 @@ class Animal(object):
 
     def pasar_un_ciclo(self):
         self.energia -= 1 # Se puede restar si no llega a comer
-        self.edad += 1
-        if self.reproducciones_pendientes > 0: #
+        self.edad += 1    # envejece
+        if (self.edad >= 2) and (self.reproducciones_pendientes > 0): #
             self.es_reproductore = True
 
     def en_vida(self):
         return (self.edad <= self.edad_maxima) and self.energia > 0
 
     def tiene_hambre(self):
-        """Acá se puede poner comportamiento para que no tenga hambre todo el tiempo
-        debería depender de la diferencia entre su nivel de energía y su energía máxima"""
-        return True
-        #pass
+        return self.energia < self.energia_maxima - 1
 
     def es_leon(self):
         return False
@@ -44,13 +43,12 @@ class Animal(object):
     def tener_cria(self):
         """Acá se puede poner comportamiento que sucede al tener cria para evitar que tengamás de una cria por ciclo, etc"""
         self.reproducciones_pendientes -= 1
-        # pass
 
     def reproducirse(self, vecinos, lugares_libres):
         pos = None
         if vecinos:
             animal = random.choice(vecinos)
-            if lugares_libres:
+            if lugares_libres and animal.puede_reproducir():
                 animal.tener_cria()
                 self.tener_cria()
                 pos = random.choice(lugares_libres)
@@ -65,7 +63,6 @@ class Animal(object):
         pos = None
         if lugares_libres:
             pos = random.choice(lugares_libres)
-
         return pos
 
     def fila_str(self):
@@ -81,6 +78,7 @@ class Animal(object):
 class Leon(Animal):
     """docstring for Leon"""
     def __init__(self):
+        self.autonomia = 3
         self.energia_maxima = 6
         self.edad_maxima = 10
         super(Leon, self).__init__()
@@ -110,6 +108,7 @@ class Antilope(Animal):
     """docstring for Antilope"""
     def __init__(self):
         self.energia_maxima = 10
+        self.autonomia = 8
         self.edad_maxima = 6
         super(Antilope, self).__init__()
         self.reproducciones_pendientes = 3

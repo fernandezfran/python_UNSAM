@@ -3,6 +3,8 @@
 tablero.py
 Created on Wed Oct  7 14:00:00 2020
 @author: mlopez
+
+Modificado el Jueves 20 de Mayo de 2021 a las 20hs (comparar con commit anterior)
 """
 from random import choice
 
@@ -17,7 +19,7 @@ class Tablero(object):
         self.n_posiciones_libres = self.filas * self.columnas
 
     # modificadores
-    def ubicar(self,  pos, elem):
+    def ubicar(self, pos, elem):
         if not self.ocupada(pos):
             self.n_posiciones_libres -= 1
         self.posiciones[pos] = elem
@@ -61,7 +63,6 @@ class Tablero(object):
     # consultas
     def hay_posiciones_libres(self):
         return self.n_posiciones_libres > 0
-        # return len(self.posiciones) <  self.filas * self.columnas
 
     def posiciones_ocupadas(self):
         res = []

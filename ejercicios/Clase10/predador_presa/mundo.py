@@ -3,6 +3,8 @@
 mundo.py
 Created on Wed Oct  7 14:00:00 2020
 @author: mlopez
+
+Modificado el Jueves 20 de Mayo de 2021 a las 20hs (comparar con commit anterior)
 """
 
 from animal import Leon, Antilope
@@ -64,7 +66,31 @@ class Mundo(object):
 
     def etapa_reproduccion(self):
         print_debug(f"Iniciando Reproducción en ciclo {self.ciclo}", self.debug)
-        # pass
+
+        for p in self.tablero.posiciones_ocupadas():
+            animal = self.tablero.posicion(p)
+        
+            posiciones_libres = self.tablero.posiciones_vecinas_libre(p)
+            
+            animales_cercanos = self.tablero.posiciones_vecinas_con_ocupantes(p)
+            animales_vecinos = [cercano[1] for cercano in animales_cercanos]
+
+            ya_reproducieron = []
+            if animal.puede_reproducir and self.tablero.hay_posiciones_libres():
+                if animal in ya_reproducieron: continue
+            
+                # se va a reproducir si ambos son leones o si ambos no lo son
+                misma_especie = [la for la in animales_vecinos if animal.es_leon() == la.es_leon()]
+                
+                pos_nuevo_animal = animal.reproducirse(misma_especie, posiciones_libres)
+
+                if pos_nuevo_animal is not None:
+                    ya_reproducieron.append(animal)
+                    if animal.es_leon():
+                        self.tablero.ubicar_en_posicion_vacia(Leon())
+                    else: # es_antilope()
+                        self.tablero.ubicar_en_posicion_vacia(Antilope())
+
 
     def cerrar_un_ciclo(self):
         print_debug(f"Concluyendo ciclo {self.ciclo}", self.debug)
