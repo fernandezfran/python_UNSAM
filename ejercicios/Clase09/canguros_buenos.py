@@ -5,13 +5,15 @@
 class Canguro:
     """ Un Canguro es un marsupial. """
 
-    def __init__(self, nombre, contenido = []):
+    def __init__(self, nombre, contenido = None):
         """
         Inicializar lso contenidos del marsupio.
 
         nombre: string
         contenido: contenido inicial del marsupio, lista de strings
         """
+        if not contenido:
+            contenido = []
         self.nombre = nombre
         self.contenido_marsupio = contenido
 
@@ -33,14 +35,10 @@ class Canguro:
             t.append(s)
         return '\n'.join(t)
 
-class Cangurito(Canguro):
-    def __init__(self, nombre, contenido = []):
-        super().__init__(nombre, contenido)
-
 
 if __name__ == '__main__':
     madre_canguro = Canguro('Madre')
-    cangurito = Cangurito('gurito')
+    cangurito = Canguro('gurito')
     madre_canguro.meter_en_marsupio('billetera')
     madre_canguro.meter_en_marsupio('llaves del auto')
     madre_canguro.meter_en_marsupio(cangurito)

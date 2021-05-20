@@ -13,6 +13,8 @@ ext = '_clip.npy'
 ROJO               = np.load(dir_name + filename + '4' + ext)
 INFRARROJO_CERCANO = np.load(dir_name + filename + '5' + ext)
 
+print(ROJO[974][1889], INFRARROJO_CERCANO[974][1889])
+
 NDVI = (INFRARROJO_CERCANO - ROJO) / (INFRARROJO_CERCANO + ROJO)
 # filtro datos ruidosos de NDVI que debe estar definido en [-1, 1]
 NDVI[NDVI > 1] = 1
