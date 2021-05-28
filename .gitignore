@@ -3,6 +3,7 @@ ejercicios/Data/arbolado-publico-lineal-2017-2018.csv
 ejercicios/Data/OBS_SHN_SF-BA.csv
 ejercicios/Data/clip*
 ejercicios/Clase10/predador_presa/simulacion.py
+docs/cs229-notes1.pdf
 *.npy
 *.png
 */*/__pycache__
