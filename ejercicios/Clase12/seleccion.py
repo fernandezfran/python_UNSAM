@@ -6,14 +6,14 @@ def ord_seleccion(lista):
        Devuelve la cantidad de comparaciones que se realizan
        """
 
-    comparaciones = 0
+    #comparaciones = 0
     # posición final del segmento a tratar
     n = len(lista) - 1
 
     # mientras haya al menos 2 elementos para ordenar
     while n > 0:
         # posición del mayor valor del segmento
-        comparaciones += n
+        #comparaciones += n
         p = buscar_max(lista, 0, n)
 
         # intercambiar el valor que está en p con el valor que
@@ -24,7 +24,7 @@ def ord_seleccion(lista):
         # reducir el segmento en 1
         n = n - 1
 
-    return comparaciones
+    #return comparaciones
 
 def buscar_max(lista, a, b):
     """Devuelve la posición del máximo elemento en un segmento de

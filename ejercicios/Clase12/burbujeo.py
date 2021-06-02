@@ -10,21 +10,21 @@ def ord_burbujeo(lista):
     Devuelve la cantidad de comparaciones realizadas
     """
     
-    comparaciones = 0
+    #comparaciones = 0
     n = len(lista) - 1
     while (n > 0):
 
         for i in range(n):
             a = lista[i]
             b = lista[i+1]
-            comparaciones += 1
+            #comparaciones += 1
             if a > b:
                 lista[i+1] = a
                 lista[i]   = b
 
         n -= 1
 
-    return comparaciones
+    #return comparaciones
 
 if __name__ == '__main__':
     lista_1 = [1, 2, -3, 8, 1, 5]
