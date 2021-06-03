@@ -9,10 +9,11 @@ def A(N):
     para un valor de N > 0 devuelve el ancho y el largo de la hoja A{N} en mm
     """
     if N == 0:
-        return 841, 1189
+        ancho, largo = 841, 1189
     else:
         ancho, largo = A(N-1)
-        return largo // 2, ancho
+        ancho, largo = largo // 2, ancho
+    return ancho, largo
 
 
 if __name__ == '__main__':
