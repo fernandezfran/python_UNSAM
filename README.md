@@ -1,6 +1,6 @@
 Ejecicios del curso de posgrado **Programación en Python** a cargo de Oscar Filevich y Rafael Grimson, de la Universidad Nacional de San Martín.
 
-Los teóricos se encuentran en este [repo](https://github.com/python-unsam/Programacion_en_Python_UNSAM) (o clonado al fin del cursado en el directorio `docs/Programacion_en_Python_UNSAM`) y las clases:
+Los teóricos se encuentran en este [repo](https://github.com/python-unsam/Programacion_en_Python_UNSAM) (o en `docs/Programacion_en_Python_UNSAM.pdf`) y las clases:
 
 + [Clase 01](https://github.com/python-unsam/Programacion_en_Python_UNSAM/tree/master/Notas/01_Introduccion/00_Resumen.md): Introducción a Python
 + [Clase 02](https://github.com/python-unsam/Programacion_en_Python_UNSAM/blob/master/Notas/02_Estructuras_y_Funciones/00_Resumen.md): Estructuras y funciones
